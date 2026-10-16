@@ -120,7 +120,6 @@ app.use((req, res) => res.status(404).json({ error: `${req.method} ${req.path} n
 app.use(sentryErrorMiddleware());
 
 app.use((err, req, res, next) => {
-  void next;
   console.error("[Error]", err.message);
   res.status(err.status || 500).json({ error: err.message || "Internal server error" });
 });
